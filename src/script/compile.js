@@ -20,6 +20,8 @@ const compileInput = {
     }
   }
 }
+
+// The compilation result of the contract
 const compileOutput = JSON.parse(solc.compile(JSON.stringify(compileInput)))
 const contractCore = compileOutput.contracts['Incrementer.sol']['Incrementer']
 
