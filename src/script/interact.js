@@ -9,8 +9,8 @@ const secret = {
   key: process.env.PRIVATE_KEY
 }
 
-// Construct web3 instance and account under Goerli provider
-const web3Instance = new web3('https://goerli.infura.io/v3/' + secret.node)
+// Construct web3 instance and account under Sepolia provider
+const web3Instance = new web3('https://sepolia.infura.io/v3/' + secret.node)
 const account = web3Instance.eth.accounts.privateKeyToAccount(secret.key)
 
 // Load contract artifacts
@@ -34,7 +34,7 @@ async function deploy() {
     gas: 8000000
   }, account.privateKey)
 
-  // Send the transaction to Goerli network via Infrua node
+  // Send the transaction to Sepolia network via Infrua node
   const deployReceipt = await web3Instance.eth.sendSignedTransaction(
     signedTransaction.rawTransaction
   )
@@ -69,7 +69,7 @@ async function increment(value, contractAddress) {
     gas: 8000000
   }, account.privateKey)
 
-  // Send the transaction to Goerli network via Infrua node
+  // Send the transaction to Sepolia network via Infrua node
   const incrementReceipt = await web3Instance.eth.sendSignedTransaction(
     signedTransaction.rawTransaction
   )
@@ -93,7 +93,7 @@ async function reset(contractAddress) {
     gas: 8000000
   }, account.privateKey)
 
-  // Send the transaction to Goerli network via Infrua node
+  // Send the transaction to Sepolia network via Infrua node
   const resetReceipt = await web3Instance.eth.sendSignedTransaction(
     signedTransaction.rawTransaction
   )
@@ -109,7 +109,7 @@ async function interact() {
   console.log(`Waiting for contract deploying ...`)
   const address = await deploy()
   console.log(`The contract has been deployed successfully`)
-  console.log(`The deployed contract can been viewed at: https://goerli.etherscan.io/address/${address}`)
+  console.log(`The deployed contract can been viewed at: https://sepolia.etherscan.io/address/${address}`)
 
   // Querying
   console.log(`\nQuerying the counter ...`)
